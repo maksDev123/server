@@ -295,7 +295,7 @@ def get_route_to_room():
     print(number)
     room_id = Room.objects(number = number).first().id
     print(room_id)
-    encoded = f.encrypt(b'room_id')
+    encoded = f.encrypt(room_id.encode('ascii'))
     print(encoded)
     return encoded
 # Starting app
