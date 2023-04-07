@@ -297,7 +297,7 @@ def get_route_to_room():
     # print(number)
     room_id = Room.objects(number = number).first().id
     # print(room_id)
-    encoded = f.encrypt(bytes(room_id, 'ascii'))
+    encoded = f.encrypt(bytes(str(room_id), 'ascii'))
     # print(encoded)
     return f'https://roomy.onrender.com/rooms/{encoded}'
 # Starting app
