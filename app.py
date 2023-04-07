@@ -294,12 +294,8 @@ def room_form(encoded):
 @cross_origin()
 def get_route_to_room():
     number = request.get_json()["room_n"]
-    print(number)
     room_id = Room.objects(number = number).first().id
-    print(room_id, "room id")
-    print(bytes(str(room_id), "ascii"), "bytes")
     encoded = f.encrypt(bytes(str(room_id), "utf-8"))
-    print(encoded, "encoded")
     return f'https://friendly-lebkuchen-92dce6.netlify.app/rooms/{encoded.decode("utf-8")}'
 
 # Starting app
