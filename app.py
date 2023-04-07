@@ -1,3 +1,5 @@
+""" Server """
+
 from flask import Flask, request
 from flask_mongoengine import MongoEngine
 import json
@@ -292,12 +294,12 @@ def room_form(encoded):
 @cross_origin()
 def get_route_to_room():
     number = request.get_json()["room_n"]
-    print(number)
+    # print(number)
     room_id = Room.objects(number = number).first().id
-    print(room_id)
-    encoded = f.encrypt(room_id.encode('ascii'))
-    print(encoded)
-    return encoded
+    # print(room_id)
+    encoded = f.encrypt(bytes(room_id, 'ascii'))
+    # print(encoded)
+    return f'https://roomy.onrender.com/rooms/{encoded}'
 # Starting app
 if __name__=="main":
     app.run()
