@@ -382,7 +382,7 @@ def get_route_to_room():
     number = request.get_json()["room_n"]
     room_id = Room.objects(number = number).first().id
     encoded = f.encrypt(bytes(str(room_id), "utf-8"))
-    return f'https://friendly-lebkuchen-92dce6.netlify.app/rooms/{encoded.decode("utf-8")}'
+    return f'https://roommy.netlify.app/rooms/{encoded.decode("utf-8")}'
 
 # Starting app
 if __name__=="main":
